@@ -1,3 +1,16 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Category, Recipe
+
+
+@admin.register(Recipe)
+class RecipeAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'is_published', 'created_at',
+                    'updated_at']
+    list_display_links = ('id', 'title',)
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'created_at',
+                    'updated_at']
