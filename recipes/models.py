@@ -21,12 +21,12 @@ class Category(Base):
 class Recipe(Base):
     preparation_choices = [
         ('Min', 'Minutos'),
-        ('Hr', 'Horas'),
+        ('Hr', 'Hora(s)'),
     ]
     servings_choices = [
-        ('Uni', 'Unidades'),
+        ('Uni', 'Unidade(s)'),
         ('Por', 'Porções'),
-        ('Pes', 'Pessoas'),
+        ('Pes', 'Pessoa(s)'),
     ]
     title = models.CharField(max_length=65)
     preparation_time = models.IntegerField()
