@@ -7,7 +7,7 @@ from .models import Category, Recipe
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'is_published', 'category', 'author', 'created_at',
                     'updated_at']
-    list_display_links = ('id', 'title',)
+    list_display_links = ('id', 'title', 'is_published')
 
 
 @admin.register(Category)

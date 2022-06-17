@@ -26,110 +26,141 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="navbar-nav">
-          <li class="nav-item">
-                <a class="nav-item nav-link active" href="#home">Início <span class="sr-only">(página atual)</span></a>
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="#  ">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-item nav-link" href="#trabalhos-recentes">Trabalhos Recentes</a>
+              <a class="nav-item nav-link" href="#">Cadastre-se</a>
           </li>
           <li class="nav-item">
-              <a class="nav-item nav-link" href="#contato">Entre em Contato</a>
+              <a class="nav-item nav-link" href="#">Entrar</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-item nav-link" href="#">Sair</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#ModalContato" >Contato</a>
           </li>
           </ul>
         </div>
     </nav>
     
     <div class="container-fluid">
-        <section class="section my-3" id="home">
-            <h2>Ipsum lorem dolor aliquam ante commodo<br>
-                 magna sed accumsan arcu neque.</h2>
-            <p>Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque cubilia.</p>
-        </section>
+      <section class="section my-3" id="home">
+        <h2>Aprenda como fazer</h2>
+        <div>
+            Receitas para você fazer e se deliciar com as receitas mais saborosas da internet, entre elas, salgadas, doces e de bebidas.
+            Aqui você irá encontrar diversas receitas que você precisa. As receitas mais simples e gostosas da internet estão aqui!
+        </div>
+        <div>
+            As melhores seleções de receitas da internet. <b>Pare de procurar</b>, aqui você encontra a receita que precisa!
+        </div>     
+      </section>
         
         <hr class="my-4">
         
         <section class="section" id="trabalhos-recentes">
-            <h2 class="">Trabalhos Recentes</h2>
+            <h2 class="">Receitas</h2>
+            
             
             <div class="row">
+              {% for recipe in recipes_list %}
                 <div class="col-12 col-sm-4">
                     <div class="card">
                       <a href="images/fulls/01.jpg">
-                          <img src="{% static 'images/fulls/01.jpg' %}" alt="" class="card-img-top">
+                          <img src="{{ recipe.image.url }}" width='370px' height='270px' alt="" class="card-img-top">
                       </a>
                       <div class='container'>
-                        <p class="card-text">Magna sed consequat tempus</p>
-                        <div class="row">
-                          <div class="col-sm-6 my-2"><small>nome: Guilherme</small></div>
-                          <div class="col-sm-6 my-2"><small>Cat: Doces</small></div>
-                          <div class="col-sm-6 my-2"><small>Porções: Doces</small></div>
-                          <div class="col-sm-6 my-2"><small>Tempo: Doces</small></div>
+                        <div class="card-text text-center">{{ recipe.title|upper}}</div>
+                        <div class="row text-center">
+                          <div class="col-sm-6 my-2"><small>Nome: {{ recipe.author|title}}</small></div>
+                          <div class="col-sm-6 my-2"><small>Categoria: {{ recipe.category|title}}</small></div>
+                          <div class="col-sm-6 my-2"><small>Porções: {{ recipe.servings|title}}</small></div>
+                          <div class="col-sm-6 my-2"><small>Tempo: {{ recipe.preparation_time|title}} {{ recipe.preparation_choices|title}}</small></div>
                         </div>
                       </div>  
                     </div>
                 </div>
+                {% empty %}
+                  <div class="center m-y">
+                    <h3 >Nenhuma receita encontrada</h3>
+                   </div>
 
-                <div class="col-12 col-sm-4">
-                  <div class="card">
-                    <a href="images/fulls/01.jpg">
-                        <img src="{% static 'images/fulls/01.jpg' %}" alt="" class="card-img-top">
-                    </a>
-                    <div class='container'>
-                      <p class="card-text">Magna sed consequat tempus</p>
-                      <div class="row">
-                        <div class="col-sm-6 my-2"><small>nome: Guilherme</small></div>
-                        <div class="col-sm-6 my-2"><small>Cat: Doces</small></div>
-                        <div class="col-sm-6 my-2"><small>Porções: Doces</small></div>
-                        <div class="col-sm-6 my-2"><small>Tempo: Doces</small></div>
-                      </div>
-                    </div>  
-                  </div>
-              </div>
+               {% endfor %}
 
-              <div class="col-12 col-sm-4">
-                <div class="card">
-                  <a href="images/fulls/01.jpg">
-                      <img src="{% static 'images/fulls/01.jpg' %}" alt="" class="card-img-top">
-                  </a>
-                  <div class='container'>
-                    <p class="card-text">Magna sed consequat tempus</p>
-                    <div class="row">
-                      <div class="col-sm-6 my-2"><small>nome: Guilherme</small></div>
-                      <div class="col-sm-6 my-2"><small>Cat: Doces</small></div>
-                      <div class="col-sm-6 my-2"><small>Porções: Doces</small></div>
-                      <div class="col-sm-6 my-2"><small>Tempo: Doces</small></div>
-                    </div>
-                  </div>  
-                </div>
-            </div>
+        
             </div> <!-- row -->
             
-            <a href="#" class="btn btn-outline-dark btn-lg my-2" role="button">Full Portfolio</a>
+            <a href="#" class="btn btn-outline-dark btn-lg my-2" role="button">Cadastrar receita</a>
         </section> <!-- .trabalhos-recentes -->
         
         <hr class="my-2">
     </div> <!-- /container-fluid -->
+
+
+    <!--Pagination-->
+    <div class="pagination justify-content-center">
+      <ul class="pagination  ">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+              <a class="page" href="?page=1">&laquo;</a>
+          </li>
+          <li class="page-item">
+              <a class="page" href="?page={{ page_obj.previous_page_number }}">&lsaquo;</a>
+          </li>
+          {%endif%}
+  
+          {% for num in page_obj.paginator.page_range %}
+  
+          {% if page_obj.number == num %}
+          <li class="page-item-active">
+              <a class="page" href="?page={{ num }}">{{ num }}</a>
+          </li>
+          {%else%}
+          <li class="page-item">
+              <a class="page" href="?page={{ num }}">{{ num }}</a>
+          </li>
+          
+           {% endif %}
+  
+  
+          {%endfor%}
+  
+          {% if page_obj.has_next %}
+          <li class="page-item">
+              <a class="page" href="?page={{ page_obj.next_page_number }}">&rsaquo;</a>
+          </li>
+  
+  
+          <li class="page-item">
+              <a class="page" href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+          </li>
+          {%endif%}
+  
+      </ul>
+  </div> 
+    <!--Pagination-->
     
     <footer class="footer">
         <ul class="nav justify-content-end d-flex">
-            <li class="nav-item"><a href="" class="nav-link icon-link">
-                <span class="sr-only">Twitter</span>
-                <i class="fab fa-twitter-square"></i>
+            <li class="nav-item"><a href="https://www.instagram.com/guirfsantos/" target='_blank' class="nav-link icon-link">
+                <span class="sr-only">instagram</span>
+                <i class="fab fa-instagram"></i>
             </a></li>
-            <li class="nav-item"><a href="" class="nav-link icon-link">
-                <i class="fab fa-facebook-square"></i><span class="sr-only">Facebook</span>
+            <li class="nav-item"><a href="https://www.linkedin.com/in/guilherme-fernandes-dos-santos/" target='_blank' class="nav-link icon-link">
+                <i class="fab fa-linkedin"></i><span class="sr-only">linkedin</span>
                 
             </a></li>
-            <li class="nav-item"><a href="" class="nav-link icon-link">
-              <i class="fab fa-facebook-square"></i><span class="sr-only">Facebook</span>
+            <li class="nav-item"><a href="https://github.com/GuilhermeSantos2405" target='_blank' class="nav-link icon-link">
+              <i class="fab fa-github-square"></i><span class="sr-only">github</span>
               
           </a></li>
         </ul>
         
-        <ul class="justify-content-end d-flex">
-            <li class="mr-2"> &copy; Untitled</li>
-            <li>Design: <a href="http://html5up.net"> HTML5 UP</a></li>
+        <ul class="justify-content-end d-flex ml-4">
+            <li class="">Desenvolvedor Back end </li>
         </ul>
+  
     </footer>	
 
 
