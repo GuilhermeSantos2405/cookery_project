@@ -1,0 +1,41 @@
+{% extends 'base_templates/base_home_templates.html' %}
+{% block title %}Categoria {% endblock title %}
+
+{% block content %}
+<section class="section" id="trabalhos-recentes">
+    <div class='container'>
+    <h2 class="">Receitas</h2>
+    <div class="row">
+      {% for recipe in recipes_list %}
+        <div class="col-12 col-sm-4">
+            <div class="card">
+              <a href="images/fulls/01.jpg">
+                  <img src="{{ recipe.image.url }}" width='370px' height='270px' alt="" class="card-img-top">
+              </a>
+              <div class='container'>
+                <div class="card-text text-center">{{ recipe.title|upper}}</div>
+                <div class="row text-center">
+                  <div class="col-sm-6 my-2"><small>Nome: {{ recipe.author|title}}</small></div>
+                  <div class="col-sm-6 my-2"><small>Categoria: {{ recipe.category|title}}</small></div>
+                  <div class="col-sm-6 my-2"><small>Porções: {{ recipe.servings|title}}</small></div>
+                  <div class="col-sm-6 my-2"><small>Tempo: {{ recipe.preparation_time|title}} {{ recipe.preparation_choices|title}}</small></div>
+                </div>
+              </div>  
+            </div>
+        </div>
+        {% empty %}
+          <div class="center m-y">
+            <h3 >Nenhuma receita encontrada</h3>
+           </div>
+
+       {% endfor %}
+
+
+    </div> <!-- row -->
+    
+    <a href="#" class="btn btn-outline-dark btn-lg my-2" role="button">Cadastrar receita</a>
+</section>
+
+<hr class="my-2">
+</div>
+{% endblock  %}

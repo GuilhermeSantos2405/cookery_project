@@ -17,11 +17,28 @@ class ListViewBase(ListView):
 
 
 class IndexTemplateView(ListViewBase):
-    template_name = 'recipes/templates/index.html'
+    template_name = 'recipes/templates/pages/index.html'
 
     def get_queryset(self):
         return Recipe.objects.filter(is_published=True).order_by('?')
 
 
-class DetailTemplateView(TemplateView):
-    template_name = 'recipes/templates/detail.html'
+class CategoryTemplateView(ListViewBase):
+    template_name = 'recipes/templates/pages/category.html'
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super().get_queryset(*args, **kwargs)
+        qs = qs.filter(category__id=self.kwargs.get(
+            'category_id'), is_published=True)
+        return qs
+
+
+class RecipeDetailView(DetailView):
+    template_name = 'recipes/templates/pages/detail.html'
+    login_url = reverse_lazy('login')
+    model = Recipe
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super().get_queryset(*args, **kwargs)
+        qs = qs.filter(is_published=True)
+        return qs

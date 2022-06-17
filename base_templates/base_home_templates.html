@@ -1,0 +1,14 @@
+{% load static %}
+<title>{% block title %}{% endblock title %}</title>
+{% include 'base_templates/home_templates/head.html' %}
+
+
+{% include 'base_templates/home_templates/header.html' %}
+
+{% block content %}{% endblock  %}
+
+{% include 'base_templates/home_templates/nav.html' %}
+
+{% include 'base_templates/home_templates/footer.html' %}
+
+{% include 'base_templates/home_templates/pagination.html' %}
