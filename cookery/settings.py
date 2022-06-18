@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'recipes',
+    'authors',
+
+    'fontawesomefree',
 ]
 
 MIDDLEWARE = [

@@ -1,5 +1,5 @@
 body{
-    background-color: #f9f9f9;
+    background-color: white;
     padding-top: 3.75rem;
     font-family: "Open Sans", Helvetica, sans-serif;
     color: #787878;
@@ -30,6 +30,7 @@ body{
     margin-bottom: 1rem;
     position: relative;
 }
+
 
 .card a::before{
     background-image: url(images/overlay.png);
@@ -65,6 +66,10 @@ body{
 
 .card a:hover::before, .card a:hover::after{
     opacity: 1;
+}
+
+.card-text {
+    margin-top: -32px; 
 }
 
 .footer{
